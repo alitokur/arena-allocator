@@ -1,23 +1,21 @@
 #include <cstdlib>
 #include <iostream>
 #include "default.h"
+RawMemoryManager::RawMemoryManager():Allocator(0){
+}
 
-RawMemoryManager::RawMemoryManager(int _size):mem_size{_size}{
-    alloc(mem_size);
-};
+void RawMemoryManager::init(){
 
-void RawMemoryManager::alloc(int _size){
-    p = (int*)malloc(_size);
-    if(p != NULL){
-        std::cout << "Memory has been allocated" 
-            "at address: " << p << std::endl;
-    }
+}
+
+void* RawMemoryManager::alloc(const std::size_t size, const std::size_t aligment){
+    return malloc(size);
 }
 
 RawMemoryManager::~RawMemoryManager(){
-    free(p);
+    
 }
 
-void RawMemoryManager::deallocate(){
-    free (p);
+void RawMemoryManager::deallocate(void* ptr){
+    free (ptr);
 }
