@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstddef>
-
+//baseclass 
 class Allocator{
     protected:
         std::size_t total_size;
@@ -17,7 +17,7 @@ class Allocator{
             total_size = 0;
         }
 
-        virtual void* Allocate(const std::size_t size, const std::size_t aligment = 0) = 0;
-        virtual void Free(void* ptr) = 0;
-        virtual void Init() = 0;
+        virtual void* alloc(const std::size_t size, const std::size_t aligment = 0) = 0 ;
+        virtual void deallocate(void* ptr) = 0;
+        virtual void init() = 0;
 };
