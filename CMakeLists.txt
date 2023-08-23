@@ -6,5 +6,6 @@ include_directories(include)
 add_executable(exe 
     main.cpp
     src/default.cpp
+    src/linear.cpp
     )
 
