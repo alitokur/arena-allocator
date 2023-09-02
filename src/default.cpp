@@ -8,8 +8,8 @@ void RawMemoryManager::init(){
 
 }
 
-void* RawMemoryManager::alloc(const std::size_t size, const std::size_t aligment){
-    return malloc(size);
+int* RawMemoryManager::alloc(const std::size_t size, const std::size_t aligment){
+    return (int*)malloc(size);
 }
 
 RawMemoryManager::~RawMemoryManager(){

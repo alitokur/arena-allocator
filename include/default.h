@@ -8,7 +8,7 @@ class RawMemoryManager:public Allocator{
         //constructors
         RawMemoryManager();
 
-        virtual void* alloc(
+        virtual int* alloc(
                 const std::size_t size, 
                 const std::size_t aligment = 0
                 )override;

@@ -55,7 +55,7 @@ int* Linear::alloc(const std::size_t size, const std::size_t aligment) {
     std::cout << "used: " << used << std::endl;
     peak = std::max(peak, used);
     std::cout << "peak: " << peak << std::endl;
-    return (void*) next_address;
+    return (int*) next_address;
 }
 
 void Linear::deallocate(void* ptr){
