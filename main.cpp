@@ -17,6 +17,8 @@ const auto A = static_cast<std::size_t>(1e9);
 int main (int argc, char *argv[]) {
     Allocator* linear_manager = new Linear(A);
     linear_manager->init();
-    linear_manager->alloc(123, 8);
+    int *x = linear_manager->alloc(123, 8);
+    *x = 12;
+    std::cout << "message: " << *x << std::endl;
     return 0;
 }
