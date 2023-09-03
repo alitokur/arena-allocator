@@ -4,12 +4,10 @@
 #include <iostream>
 #include "Allocator.h"
 #include "linear.h"
-
+#include "utils.h"
 template<class T>
 Linear<T>::Linear(const std::size_t totalSize):
-    Allocator<T>::Allocator(totalSize){
-        std::cout << "here we are!" << std::endl;
-    }
+    Allocator<T>::Allocator(totalSize){ }
 
 template<class T>
 void Linear<T>::init(){
@@ -27,13 +25,6 @@ Linear<T>::~Linear(){
     m_start_ptr = NULL;
 }
 
-// TODO: create utils class for this function
-std::size_t CalculatePadding(const std::size_t baseAddress, const std::size_t alignment) {
-    const std::size_t multiplier = (baseAddress / alignment) + 1;
-    const std::size_t alignedAddress = multiplier * alignment;
-    const std::size_t padding = alignedAddress - baseAddress;
-    return padding;
-}
 
 template<class T>
 T* Linear<T>::alloc(const std::size_t size, const std::size_t aligment) {
