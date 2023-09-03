@@ -2,27 +2,31 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
-
+#include "Allocator.h"
 #include "linear.h"
 
-Linear::Linear(const std::size_t totalSize):
-    Allocator(totalSize){
+template<class T>
+Linear<T>::Linear(const std::size_t totalSize):
+    Allocator<T>::Allocator(totalSize){
+        std::cout << "here we are!" << std::endl;
     }
 
-void Linear::init(){
+template<class T>
+void Linear<T>::init(){
     if (m_start_ptr != NULL){
         free(m_start_ptr);
     }
-    m_start_ptr = malloc(total_size);
+    m_start_ptr = malloc(this->total_size);
     std::cout << "m_start_ptr: " << m_start_ptr << std::endl;
     m_offset = 0;
 }
 
-Linear::~Linear(){
+template<class T>
+Linear<T>::~Linear(){
     free(m_start_ptr);
     m_start_ptr = NULL;
-
 }
+
 // TODO: create utils class for this function
 std::size_t CalculatePadding(const std::size_t baseAddress, const std::size_t alignment) {
     const std::size_t multiplier = (baseAddress / alignment) + 1;
@@ -31,7 +35,8 @@ std::size_t CalculatePadding(const std::size_t baseAddress, const std::size_t al
     return padding;
 }
 
-int* Linear::alloc(const std::size_t size, const std::size_t aligment) {
+template<class T>
+T* Linear<T>::alloc(const std::size_t size, const std::size_t aligment) {
     std::size_t padding = 0;
     std::size_t padded_address = 0;
     const std::size_t current_address = (std::size_t)m_start_ptr + m_offset;
@@ -41,7 +46,7 @@ int* Linear::alloc(const std::size_t size, const std::size_t aligment) {
         std::cout << "calculateOadding: " << padding << std::endl; 
     }
 
-    if(m_offset + padding + size > total_size){
+    if(m_offset + padding + size > this->total_size){
         return NULL;
     }
 
@@ -51,21 +56,25 @@ int* Linear::alloc(const std::size_t size, const std::size_t aligment) {
     std::cout << "next_address: " << next_address << std::endl;
     m_offset += size;
     std::cout << "new offset_2: " << m_offset << std::endl;
-    used = m_offset;
-    std::cout << "used: " << used << std::endl;
-    peak = std::max(peak, used);
-    std::cout << "peak: " << peak << std::endl;
+    this->used = m_offset;
+    std::cout << "used: " << this->used << std::endl;
+    this->peak = std::max(this->peak, this->used);
+    std::cout << "peak: " << this->peak << std::endl;
     return (int*) next_address;
 }
 
-void Linear::deallocate(void* ptr){
+template<class T>
+void Linear<T>::deallocate(void* ptr){
     //use reset method
     assert(false && "Use Reset() method");
 }
-
-void Linear::Reset(){
+template <class T>
+void Linear<T>::Reset(){
     m_offset = 0;
-    used = 0;
-    peak = 0; 
+    this->used = 0;
+    this->peak = 0; 
 }
+
+template class Linear<int>;
+
 

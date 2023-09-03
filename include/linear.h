@@ -1,7 +1,8 @@
 #pragma once
 #include "Allocator.h"
 
-class Linear : public Allocator{
+template<class T>
+class Linear : public Allocator<T>{
     protected:
         void* m_start_ptr = NULL;
         std::size_t m_offset;
@@ -9,8 +10,7 @@ class Linear : public Allocator{
     public:
         Linear(const std::size_t totalSize);
         virtual ~Linear(); 
-
-        virtual int* alloc(const std::size_t size, const std::size_t aligment=0) override;
+        virtual T* alloc(const std::size_t size, const std::size_t aligment=0) override;
         virtual void deallocate(void* ptr) override;
         virtual void init() override;
         virtual void Reset();
