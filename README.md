@@ -41,7 +41,7 @@ Please note that the Arena Allocator is currently compatible with Linux systems.
 
 ## Contributing
 
-I welcome contributions to FIX from the all foxes :fox_face: . If you would like to contribute, please follow these guidelines:
+ If you would like to contribute, please follow these guidelines:
 
 - Fork the repository and make changes on your own fork.
 - Ensure that your code adheres to the existing code formatting and style guidelines.
