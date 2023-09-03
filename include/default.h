@@ -1,14 +1,15 @@
+//MyTemplate 
 #pragma once
 
 #include <iostream>
 #include "Allocator.h"
-
-class RawMemoryManager:public Allocator{
+template<class T>
+class RawMemoryManager:public Allocator<T>{
     public:
         //constructors
         RawMemoryManager();
 
-        virtual int* alloc(
+        virtual T* alloc(
                 const std::size_t size, 
                 const std::size_t aligment = 0
                 )override;
@@ -18,7 +19,6 @@ class RawMemoryManager:public Allocator{
         virtual void init()override;
 
         virtual ~RawMemoryManager(); 
-
 };
 
-
+   
