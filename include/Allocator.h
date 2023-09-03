@@ -2,6 +2,7 @@
 
 #include <cstddef>
 //baseclass 
+template<class T>
 class Allocator{
     protected:
         std::size_t total_size;
@@ -17,7 +18,7 @@ class Allocator{
             total_size = 0;
         }
 
-        virtual int* alloc(const std::size_t size, const std::size_t aligment = 0) = 0 ;
+        virtual T* alloc(const std::size_t size, const std::size_t aligment = 0) = 0 ;
         virtual void deallocate(void* ptr) = 0;
         virtual void init() = 0;
 };
