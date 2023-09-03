@@ -4,7 +4,7 @@
 <h5> A custom memory allocator written in C++. It provides a high-performance memory management solution for applications that require efficient and predictable memory allocation and deallocation. </h5>
   
 ![Work In Progress](https://img.shields.io/badge/-WORK%20IN%20PROGRESS-orange)
-
+[![Build](https://github.com/alitokur/arena-allocator/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/alitokur/arena-allocator/actions/workflows/cmake.yml)
 </div>
 
 
