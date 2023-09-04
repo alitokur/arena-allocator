@@ -9,7 +9,7 @@
 
 
 ## Build
- You can build FIXT by following these steps:
+ You can build Arena Allocator by following these steps:
 
 - Clone the repository: 
 
