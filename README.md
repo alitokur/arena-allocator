@@ -19,33 +19,35 @@
 
 ## Arena Allocator
 The Arena Memory Allocator (region based memory allocator) is a fundamental
-custom memory allocation system. It involves creating single large memory block
+custom memory allocation system. It involves creating a single large memory block
 and using an offset to manage allocations. The offset serves as a reference point for
 the last allocated memory location.
 
 
-### Cons
-Speed: Arena allocators can be faster than dynamic allocation because there's no need to manage a list of free blocks or perform complex searches for suitable memory blocks.
+### Pros
+Speed: Arena allocators can be faster than dynamic allocations because there's no need to manage a list of free blocks or perform complex searches for suitable memory blocks.
+
 Predictable: Memory fragmentation is less of an issue with arena allocators, as you're allocating memory in large, contiguous chunks.
+
 Memory Leak Prevention: When the arena goes out of scope or is explicitly deallocated, all the memory allocated within it is automatically freed, reducing the risk of memory leaks.
 
-### Pros
+### Cons
 Arenas can be less flexible than other memory allocation techniques because you have to determine the maximum memory requirement upfront.
 They may not be suitable for applications with highly variable or unpredictable memory needs.
 
 ### Memory Alignment 
 Memory alignment is indeed an important concept in computer architecture and memory 
-management. Its essential for optimizing memory access and ensuring that data is accessed in 
-way that aligns with the word size of the computers architecture.
+management. It's essential for optimizing memory access and ensuring that data is accessed in 
+a way that aligns with the word size of the computer architecture.
 
-Modern computer architectures typically have a specifig word size, which is the amount
-of data the proccessor can read form memory in a single operation. For example, on 32-bit
-systems, the word size typically 4 bytes, and on 64-bit systems, it is often 8 bytes. 
+Modern computer architectures typically have a specific word size, which is the amount
+of data the processor can read from memory in a single operation. For example, on 32-bit
+systems, the word size is typically 4 bytes, and on 64-bit systems, it is often 8 bytes. 
 Memory alignment ensures that data structures start at addresses that are multiples of 
 the word size.
 
 ## FAQ
-- Why I use malloc in custom memoru allocator? Its already an allocator?
+- Why I use malloc in the custom memory allocator? Is it already an allocator?
 - Can i use brk() or sbrk() instead of malloc();
 
 ## Build
